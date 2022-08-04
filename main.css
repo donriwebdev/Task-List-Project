@@ -1,0 +1,332 @@
+/** :root is a element that is easily accesible within your css code,
+ you can otherwise create a file containing all the information and link it.
+ in doing so when choosing a color you type -var() and inside the parameter "--dark"
+ basically giving you the color palett without copy and paste **/
+:root {
+    --dark: #374151;
+    --darker: #1F2937;
+    --darkest: #111827;
+    --dark-green: #0F3D3E;
+    --gray: #6B7280;
+    --blue-gray: #A2B5BB;
+    --light: #EEE;
+    --pink: #ec4899;
+    --purple: #8B5Cf6;
+    --yellow: #EAE509;
+    --green: #5BB318;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --business: #7DCE13;
+    --personal: #FFC23C;
+    --business-glow: 0px 0px 4px rgba(125, 206, 19, 0.75);
+    --personal-glow: 0px 0px 4px rgba(255, 194, 60, 0.75);
+    --off-white: #E2DCC8;
+
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'tahoma', 'georgia', sans-serif;
+}
+
+input:not([type="radio"]) :not([type="checkbox"]), button {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: initial;
+}
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: none; 
+    color: none;
+    background-image: linear-gradient(var(--dark-green), black);
+}
+
+
+h3 {
+    color: var(--off-white);
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+h4 {
+    color: var(--off-white);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+
+.greeting .title {
+    display: flex;
+}
+
+.greeting .title input {
+    margin-left: 0.5rem;
+    flex: 1 1 0%;
+    min-width: 0; 
+}
+
+.greeting .title,
+.greeting .title input {
+    color: var(--yellow);
+    font-style: 1.5rem;
+    font-weight: 700;
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    text-shadow: 2px 1px 1px  rgba(1, 98, 82, 0.504);
+}
+
+section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.create-todo input [type="text"] {
+    display: flex;
+    width: 100%;
+    font-size: 1.75rem;
+    padding: 2rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    word-wrap: break-word;
+    
+    
+}
+
+.create-todo .options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    padding-left: 0;
+    padding-right: 0.5rem;
+
+}
+
+.create-todo .options label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background-color: var(--darker);
+    border-radius: 3rem;
+    box-shadow: var(--light);
+    cursor: pointer;
+    
+}
+
+/**The type=radio lets the user select a option of the given choices **/
+input[type="radio"],
+input[type="checkbox"] {
+     display: none;
+}
+
+.bubble {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid var(--business);
+    box-shadow: var(--business-glow);
+}
+
+.bubble.personal {
+    border-color: var(--personal);
+    box-shadow: var(--personal-glow);
+}
+
+.bubble::after {
+    content: "";
+    display: block;
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+    background-color: var(--business);
+    box-shadow: var(--business-glow);
+    border-radius: 50%;
+    transition: 0.2s ease-in-out;
+}
+
+.bubble.personal::after {
+    background-color: var(--personal);
+    box-shadow: var(--personal-glow);
+}
+
+input:checked ~ .bubble::after {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+}
+
+.create-todo .options label div {
+    color: var(--off-white);
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    
+}
+/**Had to specify the id because I only wanted to edit the task list comment box**/
+#new-todo-form input[id="content"] {
+    font-size: 1rem;
+    font-weight: 500;
+    height: 2rem;
+    width: 100%;
+    background-color: var(--off-white);
+    border-radius: 0.5rem;
+    box-shadow: var(--personal-glow);
+    word-wrap: break-word;
+}
+/** the webkit keeps the background color inside the tet to create the color 
+changing effect. which i used for the submit, edit and delete buttons**/
+.create-todo input[type="submit"] {
+    color: var(--yellow);
+    font-size: 1.5rem;
+    font-weight: 950;
+    background-image: linear-gradient(to right, var(--yellow), var(--green));
+    -webkit-background-clip: text;
+    background-clip: "text";
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    transition: 0.4s;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+    border: none;
+    text-decoration: underline;
+    text-decoration-color: var(--green);
+}
+
+/** The opacity changes the color slightly when hovering over the directed component**/
+.create-todo input[type="submit"]:hover {
+    opacity: 0.8;
+}
+
+.todo-list .list {
+    margin: 1rem 0;
+}
+
+.todo-list .todo-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--darkest);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1rem;
+}
+
+.todo-item label {
+    display: block;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+.todo-content input[type="text"] {
+    color: var(--darkest);   
+    background-color: var(--off-white);
+    border-radius: 0.5rem;
+    height: auto;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    
+}
+
+.todo-item .todo-content {
+    flex: 1 1 0%;
+    display: inline-flex;
+    background-color: var(--darkest);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+    color: var(--off-white);
+    font-size: 1.75rem;
+    box-shadow: var(--yellow);
+}
+
+
+.todo-item .todocontent input {
+    color:var(--yellow);
+    font-size: 1.125rem;
+    
+}
+
+.todo-item .actions {
+    display: flex;
+    align-items: center;
+}
+
+.todo-item .actions button {
+  display: block;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  color: var(--light);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.todo-item .actions button:hover {
+    opacity: 0.75rem;
+}
+
+.todo-item .actions .edit {
+    margin-right: 0.5rem;
+    background-color: var(--dark);
+    display: block;
+    color: var(--yellow);
+    font-size: 1.25rem;
+    font-weight: 600;
+    background-image: linear-gradient(to right, var(--yellow), var(--green));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    transition: 0.4s;
+    padding: 0.5rem;
+}
+
+.todo-item .actions .delete {
+    margin-right: 0.5rem;
+    background-color: var(--dark);
+    display: block;
+    color: var(--yellow);
+    font-size: 1.25rem;
+    font-weight: 600;
+    background-image: linear-gradient(to right, red, var(--yellow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    transition: 0.4s;
+    padding: 0.5rem;
+}
+
+.todo-item.done .todo-content input {
+    text-decoration: line-through;
+    color: red;
+    background-color: var(--blue-gray);
+}
